@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <title>My Calculator</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        .abcd {
+            background-color: transparent !important;
+        }
+
+        .abc {
+            margin: 13px;
+            transition: 1s;
+            display: flex;
+            justify-content: center;
+            box-shadow: 3px 3px 10px white;
+        }
+
+        .abc:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <div class="display-1 fw-bold text-light text-center mt-5">Calculator (Built with JS)</div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card shadow-lg bg-dark border border-5 border-light">
+                    <input type="text" disabled
+                        class="bg-dark shadow-lg m-3 p-3 text-center fs-1 text-light border border-2 border-light"
+                        id="inputBox" placeholder="0">
+                    <div class="row ms-4">
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-danger fs-3 abcd">AC</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-danger fs-3 abcd">DEL</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-danger fs-3 abcd">%</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-danger fs-3 abcd">/</button>
+                        </div>
+                    </div>
+                    <div class="row ms-4">
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">7</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">8</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">9</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-danger fs-3 abcd">*</button>
+                        </div>
+                    </div>
+                    <div class="row ms-4">
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">4</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">5</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">6</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-danger fs-3 abcd">-</button>
+                        </div>
+                    </div>
+                    <div class="row ms-4">
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">1</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">2</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">3</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-danger fs-3 abcd">+</button>
+                        </div>
+                    </div>
+                    <div class="row ms-4">
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">00</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">0</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc">
+                            <button class="border-0 text-light fs-3 abcd">.</button>
+                        </div>
+                        <div class="col-sm-2 p-3 rounded-circle abc bg-warning">
+                            <button class="border-0 text-light fs-1 abcd">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+        let input = document.getElementById('inputBox');
+        let buttons = document.querySelectorAll('button');
+
+        let string = "";
+        let arr = Array.from(buttons);
+        arr.forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (e.target.innerHTML == '=') {
+                    string = eval(string);
+                    input.value = string;
+                }
+
+                else if (e.target.innerHTML == 'AC') {
+                    string = "";
+                    input.value = string;
+                }
+                else if (e.target.innerHTML == 'DEL') {
+                    string = string.substring(0, string.length - 1);
+                    input.value = string;
+                }
+                else {
+                    string += e.target.innerHTML;
+                    input.value = string;
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>
